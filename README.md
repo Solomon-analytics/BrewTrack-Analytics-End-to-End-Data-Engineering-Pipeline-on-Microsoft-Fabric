@@ -285,19 +285,17 @@ Total pipeline run time: ~19 minutes · All activities: Succeeded
 
 ### Sales Semantic Model
 
-```
-![](orchestration_pipeline.png)
+![](sales_semantic_model.png)
 
-```
 
 ### Inventory Semantic Model
 
-```
-![](orchestration_pipeline.png)
+![](inventory_semantic_model.png)
 
-```
 
-All relationships are Many-to-One from the fact table to the dimension table. Join keys are documented in the [Data Dictionary](docs/DATA_DICTIONARY.md).
+
+All relationships are Many-to-One from the fact table to the dimension table. Join keys are documented in the 
+[Data Dictionary](docs/data dictionary.md).
 
 ---
 
@@ -413,33 +411,6 @@ brewtrack-analytics/
 │
 └── README.md
 ```
-
----
-
-## How to Run
-
-1. **Provision infrastructure** — Create an ADLS Gen2 storage account with `raw` and `landing` containers. Create a Microsoft Fabric workspace with three Lakehouses (Bronze, Silver, Gold).
-
-2. **Upload notebooks** — Import all four `.py` notebooks from the `notebooks/` folder into your Fabric workspace.
-
-3. **Create the pipeline** — Build a Fabric Data Pipeline matching the architecture above. Define all 10 parameters listed in the Orchestration section.
-
-4. **Set authentication** — Add your ADLS storage account access key to the `raw_ADLS_to_landing_ADLS` notebook as the `storage_account_key` variable.
-
-5. **Trigger the pipeline** — Set `batch_month` to the target month (e.g. `2017-01`), `processed_date` and `today_date` to the current run date, and provide your storage account names.
-
-6. **Verify outputs** — Check the Gold Lakehouse for all 8 tables. Validate the Power BI semantic models using the relationship keys in the [Data Dictionary](docs/DATA_DICTIONARY.md).
-
-> **Expected run time:** Approximately 19 minutes for a full batch month. The ForEach loop (6 files) completes in under 2 minutes. The four notebook activities complete in approximately 17 minutes combined.
-
----
-
-## Documentation
-
-| Document | Description |
-|---|---|
-| [Data Dictionary](docs/DATA_DICTIONARY.md) | Full column-level documentation for all 8 Gold tables including data types, keys, accepted values, encoding reference, and data quality notes |
-| [DAX Measures and Colour Reference](docs/BrewTrack_PowerBI_DAX_and_Colours.md) | All 60+ DAX measures for both Power BI reports, hex colour codes, chart setup guide, and conditional formatting rules |
 
 ---
 
