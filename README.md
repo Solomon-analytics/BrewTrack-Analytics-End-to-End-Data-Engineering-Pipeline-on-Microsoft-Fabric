@@ -184,9 +184,9 @@ This is the core of the **incremental load pattern**: each daily pipeline run cr
 **Outcome:** 29 daily `processing_date` partitions created under the `customer_lookup` folder in the landing container, each representing one daily pipeline run.
 
 Landing ADLS container showing customer_lookup folder with 29 processing_date partitions
-![](data processed from raw to landing adls using fabric notebook.png)
+![](data_processed_from_raw_to_landing_adls_using_fabric_notebook.png)
 
-*Landing ADLS container · customer_lookup · 29 processing_date partitions (2026-05-01 to 2026-05-21+) · Incremental load pattern confirmed · Each partition = one daily pipeline run*
+*Landing ADLS container · customer_lookup · 29 processing_date partitions. Incremental load pattern confirmed · Each partition = one daily pipeline run*
 
 ---
 
@@ -239,7 +239,8 @@ The `silver_to_gold` PySpark notebook applies business enrichment logic and prod
 
 The entire pipeline is driven by a single **Microsoft Fabric Data Pipeline** with 10 parameterised inputs. The screenshot below shows a successful full end-to-end run on 20/05/2026, completing in under 20 minutes with all activities succeeding.
 
-![Microsoft Fabric Data Pipeline showing ForEach loop and 4 notebook activities all with green succeeded ticks and a run log with activity names and durations](docs/screenshots/orchestration_pipeline.png)
+Microsoft Fabric Data Pipeline showing ForEach loop and 4 notebook activities all with green succeeded ticks and a run log with activity names and durations
+![](orchestration_pipeline.png)
 
 *Microsoft Fabric Data Pipeline · ForEach loop (6 files · 14-16s each) · Notebook ADLS raw to landing (12m 19s) · ADLS landing to bronze lh (1m 42s) · Process from bronze to silver (3m 7s) · Process from silver to gold (3m 11s) · All activities: Succeeded*
 
@@ -285,19 +286,15 @@ Total pipeline run time: ~19 minutes · All activities: Succeeded
 ### Sales Semantic Model
 
 ```
-transaction_calendar (1) ──── (*) fact_sales (*) ──── (1) dim_product
-                                      │
-                              (*) ─── (1) dim_customer
-                              (*) ─── (1) dim_employee
-                              (*) ─── (1) dim_store
+![](orchestration_pipeline.png)
+
 ```
 
 ### Inventory Semantic Model
 
 ```
-baked_calendar (1) ──── (*) fact_inventory (*) ──── (1) dim_product
-                                  │
-                          (*) ─── (1) dim_store
+![](orchestration_pipeline.png)
+
 ```
 
 All relationships are Many-to-One from the fact table to the dimension table. Join keys are documented in the [Data Dictionary](docs/DATA_DICTIONARY.md).
