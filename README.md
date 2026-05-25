@@ -168,7 +168,8 @@ Files land in ADLS under month-partitioned folders (e.g. `2017-01/`, `2017-02/`)
 
 **Outcome:** 28 monthly batch folders successfully ingested into the raw ADLS container.
 
-![Raw ADLS container showing 28 month-partitioned folders from 2017-01 to 2018-10 in the Azure Portal](docs/screenshots/all_data_ingested_from_http_to_adls_raw.png)
+Raw ADLS container showing 28 month-partitioned folders from 2017-01 to 2018-10 in the Azure Portal
+![](all_data_ingested_from_http_to_adls_raw.png)
 
 *Raw ADLS container · pocstorage7730 · 28 batch_month partitions (2017-01 to 2019-07) · All folders created by the Fabric Data Pipeline ForEach loop Copy data activity*
 
@@ -182,7 +183,8 @@ This is the core of the **incremental load pattern**: each daily pipeline run cr
 
 **Outcome:** 29 daily `processing_date` partitions created under the `customer_lookup` folder in the landing container, each representing one daily pipeline run.
 
-![Landing ADLS container showing customer_lookup folder with 29 processing_date partitions from 2026-05-01 to 2026-05-21](docs/screenshots/data_processed_from_raw_to_landing_adls_using_fabric_notebook.png)
+Landing ADLS container showing customer_lookup folder with 29 processing_date partitions
+![](data processed from raw to landing adls using fabric notebook.png)
 
 *Landing ADLS container · customer_lookup · 29 processing_date partitions (2026-05-01 to 2026-05-21+) · Incremental load pattern confirmed · Each partition = one daily pipeline run*
 
