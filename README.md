@@ -19,13 +19,10 @@
 - [Technology Stack](#technology-stack)
 - [Pipeline Layers Explained](#pipeline-layers-explained)
 - [Orchestration](#orchestration)
-- [Data Model](#data-model)
 - [Key Engineering Decisions](#key-engineering-decisions)
 - [Semantic Models](#semantic-models)
 - [Analytical Findings](#analytical-findings)
 - [Project Structure](#project-structure)
-- [How to Run](#how-to-run)
-- [Documentation](#documentation)
 
 ---
 
@@ -281,24 +278,6 @@ Total pipeline run time: ~19 minutes · All activities: Succeeded
 
 ---
 
-## Data Model
-
-### Sales Semantic Model
-
-![](sales_semantic_model.png)
-
-
-### Inventory Semantic Model
-
-![](inventory_semantic_model.png)
-
-
-
-All relationships are Many-to-One from the fact table to the dimension table. Join keys are documented in the 
-[Data Dictionary](docs/data dictionary.md).
-
----
-
 ## Key Engineering Decisions
 
 **Incremental loading via `processing_date` partitioning**
@@ -326,7 +305,7 @@ Two Power BI semantic models are served directly from the Gold Lakehouse via One
 
 Connects `fact_sales` to `dim_product`, `dim_customer`, `dim_employee`, `dim_store`, and `transaction_calendar`. Supports analysis of revenue, transaction volume, product mix, customer demographics, time-of-day trading patterns, and staff performance.
 
-![Power BI Sales Semantic Model showing fact_sales connected to transaction_calendar, dim_product, dim_customer, dim_employee and dim_store in a star schema with all relationships correctly configured](docs/screenshots/sales_semantic_model.png)
+![](sales_semantic_model.png)
 
 *Sales semantic model · Power BI · fact_sales at centre · connected to transaction_calendar, dim_product, dim_customer, dim_employee · All relationships Many-to-One · join via date_id, product_id, customer_id, staff_id*
 
@@ -336,7 +315,7 @@ Connects `fact_sales` to `dim_product`, `dim_customer`, `dim_employee`, `dim_sto
 
 Connects `fact_inventory` to `dim_product`, `dim_store`, and `baked_calendar`. Supports analysis of daily stock levels, sell-through rates, waste quantities, freshness, and stockout events across all three store locations.
 
-![Power BI Inventory Semantic Model showing fact_inventory connected to baked_calendar, dim_store and dim_product in a star schema with all relationships correctly configured](docs/screenshots/inventory_semantic_model.png)
+![](inventory_semantic_model.png)
 
 *Inventory semantic model · Power BI · fact_inventory at centre · connected to baked_calendar, dim_store, dim_product · All relationships Many-to-One · join via date_id, store_id, product_id*
 
