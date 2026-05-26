@@ -21,7 +21,7 @@
 - [Orchestration](#orchestration)
 - [Key Engineering Decisions](#key-engineering-decisions)
 - [Semantic Models](#semantic-models)
-- [Analytical Findings](#analytical-findings)
+- [Power Bi Reports](#Power-Bi-Reports)
 - [Project Structure](#project-structure)
 
 ---
@@ -321,36 +321,9 @@ Connects `fact_inventory` to `dim_product`, `dim_store`, and `baked_calendar`. S
 
 ---
 
-## Analytical Findings
+## Power Bi Reports
 
-### Sales Performance
 
-| Metric | Value |
-|---|---|
-| Total revenue | $4,533 |
-| Total transactions | 778 |
-| Total line items | 1,000 |
-| Avg revenue per line item | $4.53 |
-| Beverage revenue share | 89% ($4,048) |
-| Food revenue share | 11% ($485) |
-| Peak trading period | Morning ($1,522) |
-| Lowest trading period | Evening ($248 — 16% of morning) |
-| Highest-value customer segment | 36-50 age group ($524) |
-| Takeaway vs in-store split | 50.3% takeaway · 49.7% in-store |
-| Top staff by revenue | Brittani Jorden ($1,356) |
-
-### Inventory Health
-
-| Metric | Value |
-|---|---|
-| Avg sell-through rate | 24.9% (target: 70%+) |
-| Total waste units | 14,952 |
-| Waste from stale stock | 100% (0 units from fresh stock) |
-| Highest waste store | Lower Manhattan (5,470 units) |
-| Stockout events | 2 (0.2% of 1,000 records) |
-| Recommended bake reduction | 40-50% (stockout risk remains minimal) |
-
-> **Key finding:** The business is producing roughly 4x what it sells daily. A same-day baking policy would eliminate all 14,952 waste units. The stockout rate of 0.2% confirms there is significant headroom to reduce bake quantities safely.
 
 ---
 
