@@ -323,6 +323,12 @@ Connects `fact_inventory` to `dim_product`, `dim_store`, and `baked_calendar`. S
 
 ## Power Bi Reports
 
+## Sales report
+![](sales_report.png)
+
+## inventory report
+![](inventory_report.png)
+
 
 
 ---
